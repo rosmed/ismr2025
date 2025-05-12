@@ -1,6 +1,6 @@
 transform = slicer.mrmlScene.GetFirstNodeByName('TumorTransform')
 ros = slicer.util.getModuleLogic('ROS2')
-node = ros.GetDefaultRos2Node()
+node = ros.GetDefaultROS2Node()
 publisher = node.CreateAndAddPublisherNode('Pose', 'tumor_transform_topic')
 
 def updateTransform():
