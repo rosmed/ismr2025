@@ -43,7 +43,7 @@ t_RobotToZFrame.Inverse()
 
 # Get ZFrameToScanner (from ZFrame registration)
 mat_ZFrameToScanner = vtk.vtkMatrix4x4()
-ZFrameToScannerNode = slicer.util.getFirstNodeByName('COR TSE T2 COVER ZFRAME-label-ZFrameTransform', className='vtkMRMLLinearTransformNode')
+ZFrameToScannerNode = slicer.util.getFirstNodeByName('COR_TSE_T2_COVER_ZFRAME-label-ZFrameTransform', className='vtkMRMLLinearTransformNode')
 ZFrameToScannerNode.GetMatrixTransformToWorld(mat_ZFrameToScanner)
 t_ZFrameToScanner = vtk.vtkTransform()
 t_ZFrameToScanner.SetMatrix(mat_ZFrameToScanner)
