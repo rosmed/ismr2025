@@ -3,9 +3,9 @@ ros = slicer.util.getModuleLogic('ROS2')
 node = ros.GetDefaultROS2Node()
 publisher = node.CreateAndAddPublisherNode('Pose', 'tumor_transform_topic')
 
-def updateTransform():
+def updateTransform(caller=None, event=None):
   matrix = vtk.vtkMatrix4x4()
   transform.GetMatrixTransformToParent(matrix)
   publisher.Publish(matrix)
 
-transform.AddObserver(vtk.vtkMRMLTransformNode.TransformModifiedEvent, updateTransform)
+transform.AddObserver(slicer.vtkMRMLTransformNode.TransformModifiedEvent, updateTransform)
