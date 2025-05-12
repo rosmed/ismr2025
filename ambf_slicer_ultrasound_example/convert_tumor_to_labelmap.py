@@ -1,0 +1,10 @@
+segmentation_node = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLSegmentationNode")
+segmentation_node.CreateDefaultDisplayNodes()  # for visualization
+segmentation_node.SetName("Segmentation")
+model_node = slicer.mrmlScene.GetFirstNodeByName('TumorBoundary')
+slicer.modules.segmentations.logic().ImportModelToSegmentationNode(model_node, segmentation_node)
+segmentation_node.CreateClosedSurfaceRepresentation()
+label_map_node = slicer.mrmlScene.AddNewNodeByClass("vtkMRMLLabelMapVolumeNode")
+label_map_node.SetName("TumorBoundaryLabelMap")
+slicer.modules.segmentations.logic().ExportVisibleSegmentsToLabelmapNode(segmentation_node, label_map_node)
+print(label_map_node)
