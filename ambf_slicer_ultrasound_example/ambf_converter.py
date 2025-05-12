@@ -29,9 +29,9 @@ class PoseToAMBF(Node):
     def pose_callback(self, msg):
         # Get position (convert from meters to mm or simulation scale)
         pos = (
-            msg.position.x * 1000,
-            msg.position.y * 1000,
-            msg.position.z * 1000
+            msg.position.x * 10,
+            msg.position.y * 10,
+            msg.position.z * 10
         )
 
         # Get orientation
